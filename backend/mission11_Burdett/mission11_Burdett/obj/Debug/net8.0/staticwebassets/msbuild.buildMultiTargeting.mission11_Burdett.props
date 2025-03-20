@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\mission11_Burdett.props" />
+</Project>
