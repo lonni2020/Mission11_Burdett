@@ -1,29 +1,34 @@
-import { book } from './types/Book';
+import { useNavigate } from 'react-router-dom';
+import { book } from '../types/Book';
 import { useEffect, useState } from 'react';
 
-function BookList() {
+function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<book[]>([]);
   const [pageSize, setPageSize] = useState<number>(5);
   const [pageNum, setPageNum] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [sortOrder, setSortOrder] = useState<string>('asc');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBook = async () => {
+      const categoryParams = selectedCategories
+        .map((cat) => `categories=${encodeURIComponent(cat)}`)
+        .join('&');
       const response = await fetch(
-        `https://localhost:5000/api/Book/?pageHowMany=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}`,
+        `https://localhost:5000/api/Book/?pageHowMany=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${selectedCategories.length ? `&${categoryParams}` : ''}`,
         {
           credentials: 'include',
         }
       );
       const data = await response.json();
-      setBooks(data.book);
+      setBooks(data.books);
       setTotalItems(data.totalNumBooks);
       setTotalPages(Math.ceil(totalItems / pageSize));
     };
     fetchBook();
-  }, [pageSize, pageNum, sortOrder]);
+  }, [pageSize, pageNum, sortOrder, selectedCategories]);
 
   useEffect(() => {
     setTotalPages(Math.max(1, Math.ceil(totalItems / pageSize))); // Ensures at least 1 page
@@ -31,10 +36,6 @@ function BookList() {
 
   return (
     <div className="container mt-4">
-      <h1 className="text-center text-primary">Book Store</h1>
-      <h3 className="text-center text-secondary">
-        A list of our entire collection
-      </h3>
       <br />
 
       {/* Sorting Dropdown */}
@@ -49,42 +50,47 @@ function BookList() {
           <option value="desc">Title (Z-A)</option>
         </select>
       </div>
-
-      {/* Book List - Single column */}
-      <div className="d-flex flex-column align-items-center">
+      <div className="row g-4">
         {books.map((p) => (
-          <div
-            key={p.bookID}
-            className="card shadow-sm mb-4"
-            style={{ maxWidth: '600px', width: '100%' }}
-          >
-            <div className="card-body">
-              <h3 className="card-title text-primary text-truncate">
-                {p.title}
-              </h3>
-              <ul className="list-unstyled">
-                <li>
-                  <strong>Author:</strong> {p.author}
-                </li>
-                <li>
-                  <strong>Publisher:</strong> {p.publisher}
-                </li>
-                <li>
-                  <strong>ISBN:</strong> {p.isbn}
-                </li>
-                <li>
-                  <strong>Classification:</strong> {p.classification}
-                </li>
-                <li>
-                  <strong>Category:</strong> {p.category}
-                </li>
-                <li>
-                  <strong>Page Count:</strong> {p.pageCount}
-                </li>
-                <li>
-                  <strong>Price:</strong> ${p.price}
-                </li>
-              </ul>
+          <div key={p.bookID} className="col-md-6">
+            {' '}
+            {/* Changed to 4 columns for better spacing */}
+            <div className="card shadow-sm h-100">
+              <div className="card-body d-flex flex-column">
+                <h3 className="card-title text-primary text-truncate">
+                  {p.title}
+                </h3>
+                <ul className="list-unstyled">
+                  <li>
+                    <strong>Author:</strong> {p.author}
+                  </li>
+                  <li>
+                    <strong>Publisher:</strong> {p.publisher}
+                  </li>
+                  <li>
+                    <strong>ISBN:</strong> {p.isbn}
+                  </li>
+                  <li>
+                    <strong>Classification:</strong> {p.classification}
+                  </li>
+                  <li>
+                    <strong>Category:</strong> {p.category}
+                  </li>
+                  <li>
+                    <strong>Page Count:</strong> {p.pageCount}
+                  </li>
+                  <li>
+                    <strong>Price:</strong> ${p.price}
+                  </li>
+                </ul>
+                {/* Push button to the bottom right */}
+                <button
+                  className="btn btn-primary mt-auto ms-auto"
+                  onClick={() => navigate(`/summary/${p.title}/${p.bookID}/${p.price}`)}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         ))}

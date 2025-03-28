@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mission11_Burdett")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+843657c0f358a7ed9897a1643bd1984435adefe3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df1fb842e07bb0c38ea1d3c009164fc34a36fbe7")]
 [assembly: System.Reflection.AssemblyProductAttribute("mission11_Burdett")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mission11_Burdett")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -21,10 +21,25 @@
         "Name": "sortOrder",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "categories",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [],
     "EndpointName": "GetBooks"
+  },
+  {
+    "ContainingType": "mission11_Burdett.Controllers.BookController",
+    "Method": "GetCategory",
+    "RelativePath": "api/Book/GetCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "mission11_Burdett.Controllers.WeatherForecastController",

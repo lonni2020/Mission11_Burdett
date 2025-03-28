@@ -16,34 +16,45 @@ namespace mission11_Burdett.Controllers
         }
 
         [HttpGet(Name = "GetBooks")]
-        public IActionResult GetBooks(int pageHowMany=5, int pageNum=1, string sortOrder ="asc" )
+        public IActionResult GetBooks(int pageHowMany = 5, int pageNum = 1, string sortOrder = "asc", [FromQuery] List<string>? categories = null)
         {
-            IQueryable<Book> query = _bookContext.Books;
+            IQueryable<Book> query = _bookContext.Books.AsQueryable();
+
+            // Apply category filtering
+            if (categories != null && categories.Any())
+            {
+                query = query.Where(b => categories.Contains(b.Category));
+            }
 
             // Apply sorting based on the title
-            if (sortOrder.ToLower() == "desc")
-            {
-                query = query.OrderByDescending(b => b.Title);
-            }
-            else
-            {
-                query = query.OrderBy(b => b.Title);
-            }
+            query = sortOrder.ToLower() == "desc" ? query.OrderByDescending(b => b.Title) : query.OrderBy(b => b.Title);
 
+            // Apply pagination
             var bookList = query
-                .Skip((pageNum-1)* pageHowMany)
+                .Skip((pageNum - 1) * pageHowMany)
                 .Take(pageHowMany)
                 .ToList();
 
-            var totalNumBooks = _bookContext.Books.Count();
+            var totalNumBooks = query.Count(); // Count after filtering
 
             var bookObject = new
             {
-                Book = bookList,
-                totalNumBooks = totalNumBooks,
+                Books = bookList,
+                TotalNumBooks = totalNumBooks
             };
 
             return Ok(bookObject);
+        }
+
+        [HttpGet("GetCategory")]
+        public IActionResult GetCategory()
+        {
+            var categories = _bookContext.Books
+                .Select(p => p.Category)
+                .Distinct()
+                .ToList();
+
+            return Ok(categories);
         }
     }
 }
