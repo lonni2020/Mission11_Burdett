@@ -1,17 +1,26 @@
+// SummaryPage.tsx
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import { useCart } from '../context/CartContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CartItem } from '../types/CartItem';
 import CartSummary from '../components/CartSummary';
 
 function SummaryPage() {
   const navigate = useNavigate();
-  const { title, bookID, price } = useParams(); // Get price from URL params
-  const { addToCart } = useCart();
+  const { title, bookID, price } = useParams();
+  const { addToCart, cart } = useCart();
 
-  const bookPrice = Number(price) || 0; // Ensure price is treated as a number
-  const [count, setCount] = useState<number>(1); // Default quantity is 1
+  const bookPrice = Number(price) || 0;
+  const [count, setCount] = useState<number>(1);
+
+  useEffect(() => {
+    // Check if the book already exists in the cart and update the count accordingly
+    const existingItem = cart.find((item) => item.bookID === Number(bookID));
+    if (existingItem) {
+      setCount(existingItem.count);
+    }
+  }, [cart, bookID]);
 
   const increaseCount = () => setCount(count + 1);
   const decreaseCount = () => setCount(count > 1 ? count - 1 : 1);
@@ -21,7 +30,7 @@ function SummaryPage() {
       bookID: Number(bookID),
       title: title || 'No Title Available',
       count,
-      price: count * bookPrice, // Use the dynamic price
+      price: count * bookPrice,
     };
     addToCart(newItem);
     navigate('/cart');

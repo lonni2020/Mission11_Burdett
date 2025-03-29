@@ -19,26 +19,49 @@ function CartPage() {
             ) : (
               <ul className="list-group mb-3">
                 {cart.map((item: CartItem) => (
-                  <li key={item.bookID} className="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                      <strong>{item.title}</strong> - ${item.price.toFixed(2)}
+                  <li
+                    key={item.bookID}
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div className="d-flex justify-content-between w-100">
+                      <div className="d-flex flex-column">
+                        <strong>{item.title}</strong>
+                        <div className="text-muted">
+                          <div>Price: ${item.price / item.count}</div>
+                          <div>Number in Cart: {item.count}</div>
+                        </div>
+                      </div>
+                      <div className="d-flex flex-column text-end">
+                        <span className="fw-bold">
+                          Subtotal: ${item.price.toFixed(2)}
+                        </span>
+                        <button
+                          className="btn btn-danger btn-sm mt-2"
+                          onClick={() => removeFromCart(item.bookID)}
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
-                    <button className="btn btn-danger btn-sm" onClick={() => removeFromCart(item.bookID)}>
-                      Remove
-                    </button>
                   </li>
                 ))}
               </ul>
             )}
 
-            <div className="d-flex justify-content-between align-items-center">
-              <h3 className="text-dark">Total: <span className="text-success">
-                ${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
-              </span></h3>
+            <div className="d-flex justify-content-between align-items-center mt-3">
+              <h3 className="text-dark">
+                Total:{" "}
+                <span className="text-success">
+                  ${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
+                </span>
+              </h3>
             </div>
 
             <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-outline-primary" onClick={() => navigate('/')}>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => navigate('/')}
+              >
                 Continue Browsing
               </button>
               <button className="btn btn-success">Checkout</button>
