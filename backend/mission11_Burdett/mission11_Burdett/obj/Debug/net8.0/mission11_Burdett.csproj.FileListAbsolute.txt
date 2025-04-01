@@ -267,10 +267,10 @@ C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\miss
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.mission11_Burdett.props
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.mission11_Burdett.props
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\mission1.DD59BDA5.Up2Date
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\mission11_Burdett.dll
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\refint\mission11_Burdett.dll
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\mission11_Burdett.pdb
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\mission11_Burdett.genruntimeconfig.cache
 C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\obj\Debug\net8.0\ref\mission11_Burdett.dll
+C:\Users\lonni\OneDrive\Desktop\Mission12_Burdett\Mission11_Burdett\backend\mission11_Burdett\mission11_Burdett\bin\Debug\net8.0\Bookstore.sqlite

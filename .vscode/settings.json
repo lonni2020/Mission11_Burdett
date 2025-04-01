@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/93eb0b08-6e64-4874-9c98-74f6426085fb/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/BookShop-Lonni-Backend/subscriptions/93eb0b08-6e64-4874-9c98-74f6426085fb/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/bookProjectv2",
+  "appService.deploySubpath": "backend\\mission11_Burdett\\mission11_Burdett\\publish"
+}

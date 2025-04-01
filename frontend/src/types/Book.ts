@@ -7,5 +7,5 @@ export type book = {
     classification:string;
     category:string;
     pageCount:number;
-    price:Float32Array;
+    price:number;
 }
