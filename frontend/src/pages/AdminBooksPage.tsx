@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 import { book } from '../types/Book';
 import { deleteBook, fetchBooks } from '../api/BooksAPI';
 import Pagination from '../components/Pagination';
-import { useNavigate } from 'react-router-dom';
 import NewBookForm from '../components/NewBookForm';
-import EditBookForm from '../components/EditBook';
 import EditBook from '../components/EditBook';
 
 const AdminBooksPage = () => {
@@ -13,10 +11,7 @@ const AdminBooksPage = () => {
   const [loading, setLoading] = useState(true);
   const [pageSize, setPageSize] = useState<number>(5);
   const [pageNum, setPageNum] = useState<number>(1);
-  const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [sortOrder, setSortOrder] = useState<string>('asc');
-  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [editingBook, setEditingBook] = useState<book | null>(null);
 
