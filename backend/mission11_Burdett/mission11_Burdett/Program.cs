@@ -18,10 +18,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
     policy =>
     {
-        policy.AllowAnyOrigin();
-        .AllowCredentials();
-        .AllowAnyHeader();
-        .AllowAnyMethod();
+        policy.WithOrigins("https://orange-glacier-00fc8461e.6.azurestaticapps.net")
+              .AllowCredentials()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
@@ -37,6 +37,7 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseCors("AllowFrontend");
 
+app.UseRouting();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
