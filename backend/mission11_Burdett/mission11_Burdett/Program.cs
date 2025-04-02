@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
     policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("https://orange-glacier-00fc8461e.6.azurestaticapps.net")
         .AllowCredentials()
         .AllowAnyHeader()
         .AllowAnyMethod();
